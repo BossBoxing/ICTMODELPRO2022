@@ -128,25 +128,20 @@ void loop()
   }
   else if(function == 2){
     readServo();
-    
-    // oledClear();
-    // setTextSize(1);
-    // while(1){
-    //   oled(5,0,"L3:%d ", S_LLL);
-    //   oled(5,10,"L2:%d ", S_LL);
-    //   oled(5,20,"L1:%d ", S_L);
-    //   oled(5,30,"C:%d ", S_C);
-    //   oled(5,40,"R1:%d ", S_R);
-    //   oled(5,50,"R2:%d ", S_RR);
-    //   oled(5,60,"R3:%d ", S_RRR);
-    //   delay(50);
-    //   oledClear();
-    // }
   }
   else if(function == 3){
-    FFF();
-    PlaceCan();
-    Stop(100);
-    Wait();
+    oledClear();
+    setTextSize(1);
+    while(1){
+      oled(5,0,"L3:%d ", S_LLL);
+      oled(5,10,"L2:%d ", S_LL);
+      oled(5,20,"L1:%d ", S_L);
+      oled(5,30,"C:%d ", S_C);
+      oled(5,40,"R1:%d ", S_R);
+      oled(5,50,"R2:%d ", S_RR);
+      oled(5,60,"R3:%d ", S_RRR);
+      delay(50);
+      oledClear();
+    }
   }
 }

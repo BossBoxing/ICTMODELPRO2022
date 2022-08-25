@@ -29,8 +29,14 @@ void Log(int t) {
 }
 void Place() {
   Stop(1);
-  servo(A0, Lift_Max);  delay(200);
-  servo(A1, Pin_Max);  delay(100);
+  for (int i = Lift; i > Lift_Max; i-=5)
+  {
+    servo(A0, i); delay(15);
+  }
+  delay(200);
+  Lift = Lift_Max;
+  servo(A1, Pin_Max);  delay(300);
+  Pin = Pin_Max;
   Stop(1);
 }
 int findError(){
@@ -122,7 +128,7 @@ void TrackSlowTime(int Time) {
   }
 }
 void TR90() {
-  Fw(20);
+  Fw(40);
   Stop(50);
   motor(1, Slow_L); motor(2, -(Slow_R + 8)); delay(100);
   // while (S_R <= Ref_R) {
@@ -135,7 +141,7 @@ void TR90() {
   }
 }
 void TL90() {
-  Fw(20);
+  Fw(40);
   Stop(50);
   motor(1, -(Slow_L + 8)); motor(2, Slow_R); delay(120);
   // while (S_L <= Ref_L) {
@@ -196,33 +202,46 @@ void PlaceCan() {
         Track();
       }
     }
-    TrackTime(50);
+    TrackTime(100);
 }
 
 void FFF(){
+  while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){Track();}
+  TrackTime(100);
+}
+void FFF_Can(){
   while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){Track();}
   TrackTime(50);
 }
 void LLL(){
   while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){Track();}
   TL90();
-  TrackTime(50);
+  TrackTime(100);
 }
 void RRR(){
   while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){Track();}
   TR90();
-  TrackTime(50);
+  TrackTime(100);
 }
 
 void Start() {
   motor(1, Slow_R); motor(2, Slow_L);
-  delay(580);
+  delay(600);
+  if(S_LLL > Ref_LLL || S_RRR > Ref_RRR){
+    while(S_LLL > Ref_LLL || S_RRR > Ref_RRR)
+    {
+      motor(1, Slow_R); motor(2, Slow_L);
+      delay(10);
+    }
+    motor(1, Slow_R); motor(2, Slow_L);
+    delay(100);
+  }
 }
 void Finish() {
   while ((S_LL < Ref_LLL) && (S_RR < Ref_RR)) {
-    TrackSlow();
+    Track();
   }
-  Fw(400);
+  Fw(500);
   Stop(100);
 }
 
@@ -450,7 +469,7 @@ void Brown() {
   Start();
   RRR();
   FFF();
-  FFF();
+  FFF_Can();
   PlaceCan();
   FFF();
   LLL();
@@ -468,7 +487,7 @@ void Pink() {
   FFF();
   FFF();
   FFF();
-  FFF();
+  FFF_Can();
   PlaceCan();
   FFF();
   FFF();
@@ -491,7 +510,7 @@ void Orange() {
   FFF();
   FFF();
   FFF();
-  FFF();
+  FFF_Can();
   PlaceCan();
   FFF();
   FFF();
@@ -516,7 +535,7 @@ void Yellow() {
   FFF();
   RRR();
   FFF();
-  FFF();
+  FFF_Can();
   PlaceCan();
   FFF();
   LLL();
@@ -541,7 +560,7 @@ void Green() {
   FFF();
   FFF();
   FFF();
-  FFF();
+  FFF_Can();
   PlaceCan();
   RRR();
   LLL();
@@ -568,7 +587,7 @@ void Blue() {
   LLL();
   RRR();
   FFF();
-  FFF();
+  FFF_Can();
   PlaceCan();
   FFF();
   LLL();
@@ -601,7 +620,7 @@ void Purple() {
   FFF();
   FFF();
   FFF();
-  FFF();
+  FFF_Can();
   PlaceCan();
   FFF();
   FFF();
