@@ -1,0 +1,6 @@
+{
+    "configuration": "cpu=atmega2560",
+    "board": "arduino:avr:modelmega",
+    "sketch": "ICTMODELPRO2022.ino",
+    "port": "/dev/tty.usbserial-14310"
+}
