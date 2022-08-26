@@ -243,6 +243,8 @@ void Finish() {
   }
   Fw(500);
   Stop(100);
+  beep();
+  delay(200);
 }
 
 void Wait() {
@@ -263,7 +265,7 @@ void ok() {
   Serial1.begin(9600);
 
   while (SW_OK() == 1) {
-    function = knob(0, 4);
+    function = knob(0, 5);
     setTextSize(5);
     oled(50, 15, "%d", function);
     oledClear();
@@ -461,181 +463,4 @@ void Pin_out() { //วาง
   Pin -= 6;
   Pin = (Pin < Pin_Max) ? Pin_Max : Pin;
   servo(A1, Pin);
-}
-
-void Brown() {
-  oled(0, 0, "DEC= %d Brown", x);
-
-  Start();
-  RRR();
-  FFF();
-  FFF_Can();
-  PlaceCan();
-  FFF();
-  LLL();
-  Finish();
-  Stop(100);
-
-}
-void Pink() {
-  oled(0, 0, "DEC= %d Pink", x);
-
-  Start();
-  FFF();
-  FFF();
-  RRR();
-  FFF();
-  FFF();
-  FFF();
-  FFF_Can();
-  PlaceCan();
-  FFF();
-  FFF();
-  FFF();
-  LLL();
-  FFF();
-  FFF();
-  Finish();
-  Stop(100);
-}
-void Orange() {
-  oled(0, 0, "DEC= %d Orange", x);
-
-  Start();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  RRR();
-  FFF();
-  FFF();
-  FFF();
-  FFF_Can();
-  PlaceCan();
-  FFF();
-  FFF();
-  FFF();
-  LLL();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  Finish();
-  Stop(100);
-}
-void Yellow() {
-  oled(0, 0, "DEC= %d yellow", x);
-
-  Start();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  RRR();
-  FFF();
-  FFF_Can();
-  PlaceCan();
-  FFF();
-  LLL();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  Finish();
-  Stop(100);
-}
-void Green() {
-  oled(0, 0, "DEC= %d Green", x);
-
-  Start();
-  RRR();
-  LLL();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF_Can();
-  PlaceCan();
-  RRR();
-  LLL();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  Finish();
-  Stop(100);
-}
-void Blue() {
-  oled(0, 0, "DEC= %d Blue", x);
-
-  Start();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  LLL();
-  RRR();
-  FFF();
-  FFF_Can();
-  PlaceCan();
-  FFF();
-  LLL();
-  RRR();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  Finish();
-  Stop(100);
-}
-void Purple() {
-  oled(0, 0, "DEC= %d Purple", x);
-
-  Start();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  LLL();
-  FFF();
-  FFF();
-  RRR();
-  FFF();
-  FFF();
-  FFF();
-  FFF_Can();
-  PlaceCan();
-  FFF();
-  FFF();
-  LLL();
-  FFF();
-  FFF();
-  RRR();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  FFF();
-  Finish();
-  Stop(100);
 }

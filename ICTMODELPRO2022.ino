@@ -144,4 +144,14 @@ void loop()
       oledClear();
     }
   }
+  else if(function == 4){
+    // -- ทดสอบโปรแกรมที่นี้ -- //
+    
+    FFF();
+    LLL();
+
+    // -- สิ้นสุด -- //
+    
+    Stop(1000); Wait();
+  }
 }
