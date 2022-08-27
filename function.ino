@@ -204,6 +204,63 @@ void PlaceCan() {
     }
     TrackTime(100);
 }
+void PlaceCan_BL() {
+    Stop(100);
+    Place();
+      
+    motor(1, -60);  motor(2, -60); delay(100);
+    Stop(30);
+
+    while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){
+      motor(1, -60);  motor(2, -60);
+    }
+
+    TL90();
+
+    if ((S_LLL < Ref_LLL) || (S_RRR < Ref_RRR))
+    {
+      while ((S_LLL < Ref_LLL) && (S_RRR < Ref_RRR))
+      {
+        Track();
+      }
+    }
+    TrackTime(100);
+}
+void PlaceCan_BR() {
+    Stop(100);
+    Place();
+      
+    motor(1, -60);  motor(2, -60); delay(100);
+    Stop(30);
+
+    while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){
+      motor(1, -60);  motor(2, -60);
+    }
+
+    TR90();
+
+    if ((S_LLL < Ref_LLL) || (S_RRR < Ref_RRR))
+    {
+      while ((S_LLL < Ref_LLL) && (S_RRR < Ref_RRR))
+      {
+        Track();
+      }
+    }
+    TrackTime(100);
+}
+void PlaceCan_Can() {
+    Stop(100);
+    Place();
+      
+    motor(1, -60);  motor(2, -60); delay(100);
+    Stop(30);
+
+    while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){
+      motor(1, -60);  motor(2, -60);
+    }
+
+    U90();
+}
 
 void FFF(){
   while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){Track();}
