@@ -223,6 +223,16 @@ void RRR(){
   TR90();
   TrackTime(100);
 }
+void LLL_Can(){
+  while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){Track();}
+  TL90();
+  TrackTime(50);
+}
+void RRR_Can(){
+  while(S_LLL < Ref_LLL && S_RRR < Ref_RRR){Track();}
+  TR90();
+  TrackTime(50);
+}
 
 void Start() {
   motor(1, Slow_R); motor(2, Slow_L);
